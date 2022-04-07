@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/App.scss';
 import Menu from '../components/Menu';
-import { Jumbotron } from 'react-bootstrap';
+import { Jumbotron, Button } from 'react-bootstrap';
 
 const Homepage = () => (
   <>
@@ -9,6 +9,7 @@ const Homepage = () => (
     <Jumbotron>
       <h1 className="header">Slider</h1>
     </Jumbotron>
+    <Button>Test</Button>
   </>
 );
 
