@@ -1,23 +1,28 @@
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Menu = () => (
-  <Navbar bg="light" expand="lg">
+  <>
     <Container>
-      <Navbar.Brand href="#home">Katalog App</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home">Katalog App</Navbar.Brand>
+        <Nav className="mr-auto">
           <Nav.Link as="div">
             <Link to="/">Anasayfa</Link>
           </Nav.Link>
           <Nav.Link as="div">
-            <Link to="/category">Ürünler</Link>
+            <Link to="/categories/all">Ürünler</Link>
           </Nav.Link>
         </Nav>
-      </Navbar.Collapse>
+        <Nav className="justify-content-end">
+          <Nav.Link as="div">
+            <Link to="/categories/favorite">🤍 Favorites</Link>
+          </Nav.Link>
+        </Nav>
+      </Navbar>
     </Container>
-  </Navbar>
+    <hr />
+  </>
 );
 
 export default Menu;

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { CATALOG_API } from './constants';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: CATALOG_API,
 });
 
 export default axiosInstance;
