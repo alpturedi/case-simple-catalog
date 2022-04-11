@@ -2,12 +2,12 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
-import { default as categories } from './categories/categories';
-import { default as products } from './products/products';
+import { productApi } from './services/productApi';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { configureStore } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
-  categories,
-  products,
+  [productApi.reducerPath]: productApi.reducer,
 });
 
 const persistConfig = {
@@ -18,7 +18,13 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer, applyMiddleware(thunk));
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [thunk, productApi.middleware],
+});
+
 const persistor = persistStore(store);
+
+setupListeners(store.dispatch);
 
 export { store, persistor };
